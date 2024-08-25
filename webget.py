@@ -18,23 +18,26 @@ def getinfo(url):
     return(prettify(infodict))
 
 def prettify(uglydict):
-    print("PRETTYSTARTED")
     pretdict ={}
     for i in uglydict:
-        uglyval = ""
+        nonefs = False
+        if(uglydict[i] is None):
+            nonefs = True
         uglyval = str(uglydict[i])
         binaryno = 0
+        print(i + " is " + uglyval)
         prettyval = ""
-        print(pretdict)
-        for i in uglyval:
-            if(i == '"'):
+        for q in uglyval:
+            if(q == '"'):
                 binaryno+=1
                 if(binaryno == 2):
+                    if(nonefs == True):
+                        prettyval == "UIN"
                     pretdict[i] = prettyval
+                    prettyval = ""
                     break
             if(binaryno%2  == 1 ):
-                prettyval += i 
-                
+                prettyval += q 
     return pretdict 
     
 
