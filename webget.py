@@ -43,9 +43,8 @@ def parseinfo(url):
             "ArticlePublishedTime",
             "ArticlePublisher",
             "ArticleAuthor",
-            "SiteUrl" ,
             "AccessDate",
-            "Other contributers"
+            "OtherCon"
     ]
 
     foundinfo = getinfo(url)
@@ -59,4 +58,5 @@ def parseinfo(url):
     while(int(len(allreqs)) - y > 0):
         allreqdict[allreqs[y]] = "*NFound"
         y += 1
+    allreqdict["SiteUrl"] = url
     return(allreqdict)

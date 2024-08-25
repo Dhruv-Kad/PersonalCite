@@ -17,3 +17,24 @@ TITLE OF ARTICLE
 LOCATION OF PUBLISHER:
 PUBLISHER
 URL
+
+    allreqs = [
+            "SiteName",
+            "ArticleTitle",
+            "ArticlePublishedTime",
+            "ArticlePublisher",
+            "ArticleAuthor",
+            "SiteUrl" ,
+            "AccessDate",
+            "Other contributers"
+    ]
+    allreqs = [
+            "SiteName",
+            "ArticleTitle",
+            "ArticlePublishedTime",
+            "ArticlePublisher",
+            "ArticleAuthor",
+            "AccessDate",
+            "OtherCon"
+    ]
+

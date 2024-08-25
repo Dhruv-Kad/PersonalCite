@@ -6,9 +6,9 @@ def CiteSelect():
     print("Select a format (MLA,APA)")
     format = input("ENTER FORTMAT|:| ")
     if format.startswith("a") or format.startswith("A"):
-        print("APA")
+        print("Run the APA function")
     else:
-        print("MLA")
+        print("Run the MLA function")
 
 
 if __name__ == '__main__':
