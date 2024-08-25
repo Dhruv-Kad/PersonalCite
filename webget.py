@@ -3,8 +3,8 @@ from bs4 import  BeautifulSoup
 import requests
 infolist = ["SiteName", "ArticleTitle", "ArticlePublishedTime", "ArticlePublisher", "ArticleAuthor"]
 infodict = {}
-#probably going to need to come up with some redanduancy for all the different ways that metadata can be associated
-#never mind
+
+# Uses BeautifulSoup to scrape a site for info then formats the info into a prettifier
 def getinfo(url):
     matchtable = ["og:site_name", "og:title", "article:published_time", "article:publisher", "article:author"]
     source = requests.get(url).text
@@ -16,13 +16,10 @@ def getinfo(url):
         inflist_counter += 1
     print(infodict)
     return(prettify(infodict))
-
+#Prettifier gets ride of html tags and reduces down to the strings we need
 def prettify(uglydict):
     pretdict ={}
     for i in uglydict:
-        nonefs = False
-        if(uglydict[i] is None):
-            nonefs = True
         uglyval = str(uglydict[i])
         binaryno = 0
         print(i + " is " + uglyval)
@@ -31,8 +28,6 @@ def prettify(uglydict):
             if(q == '"'):
                 binaryno+=1
                 if(binaryno == 2):
-                    if(nonefs == True):
-                        prettyval == "UIN"
                     pretdict[i] = prettyval
                     prettyval = ""
                     break
@@ -57,11 +52,15 @@ def parseinfo(url):
     foundinfo = getinfo(url)
     y=0
     allreqdict = {}
+    #takes the found info and stores it
     for x in foundinfo:
         val = foundinfo[x]
         allreqdict[allreqs[y]] = val
-        y += 1 
-    print(allreqdict)
-
+        y += 1
+    while(int(len(allreqs)) - y > 0):
+        allreqdict[allreqs[y]] = "*NFound"
+        y += 1
+    print("FINAL DICT AHHHHH")
+    return(allreqdict)
 if __name__ == '__main__':
     print(parseinfo('https://www.thestack.technology/microsofts-new-ai-pcs-will-screenshot-everything-every-2-seconds/'))
