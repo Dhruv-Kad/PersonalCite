@@ -1,6 +1,7 @@
 # This is the part that should get information from the web so that the user has a more streamlined experince
 from bs4 import  BeautifulSoup
 import requests
+# List is modular as long as you write the corresponding html property in the get info function to scrape
 infolist = ["SiteName", "ArticleTitle", "ArticlePublishedTime", "ArticlePublisher", "ArticleAuthor"]
 infodict = {}
 
@@ -14,7 +15,6 @@ def getinfo(url):
         match1 = soup.find('meta', property= (i))
         infodict[infolist[inflist_counter]] = match1
         inflist_counter += 1
-    print(infodict)
     return(prettify(infodict))
 #Prettifier gets ride of html tags and reduces down to the strings we need
 def prettify(uglydict):
@@ -22,7 +22,6 @@ def prettify(uglydict):
     for i in uglydict:
         uglyval = str(uglydict[i])
         binaryno = 0
-        print(i + " is " + uglyval)
         prettyval = ""
         for q in uglyval:
             if(q == '"'):
@@ -31,10 +30,10 @@ def prettify(uglydict):
                     pretdict[i] = prettyval
                     prettyval = ""
                     break
-            if(binaryno%2  == 1 ):
-                prettyval += q 
+            else:
+                if (binaryno%2  == 1 ):
+                    prettyval += q 
     return pretdict 
-    
 
 def parseinfo(url): 
         #Make a list with the key parts of a citation formatted pretty
@@ -60,7 +59,4 @@ def parseinfo(url):
     while(int(len(allreqs)) - y > 0):
         allreqdict[allreqs[y]] = "*NFound"
         y += 1
-    print("FINAL DICT AHHHHH")
     return(allreqdict)
-if __name__ == '__main__':
-    print(parseinfo('https://www.thestack.technology/microsofts-new-ai-pcs-will-screenshot-everything-every-2-seconds/'))
