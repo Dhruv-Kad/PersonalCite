@@ -10,8 +10,7 @@ def CiteSelect():
         print("Run the APA function")
         mkcite.apa(infdict)
     else:
-        print("Run the MLA function")
-
+        mkcite.mla(infdict)
 
 if __name__ == '__main__':
     print("DONT RUN ME")

@@ -41,6 +41,7 @@ def parseinfo(url):
             "SiteName",
             "ArticleTitle",
             "ArticlePublishedTime",
+            "ArticlePublisherLocal",
             "ArticlePublisher",
             "ArticleAuthor",
             "AccessDate",
