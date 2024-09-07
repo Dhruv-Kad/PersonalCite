@@ -2,7 +2,8 @@
 import webget
 import mkcite
 def CiteSelect():
-    infdict = webget.parseinfo("https://www.thestack.technology/microsofts-new-ai-pcs-will-screenshot-everything-every-2-seconds/")
+    usedurl = input("Enter the url below \n")
+    infdict = webget.parseinfo(usedurl)
     print(infdict)
     print("Select a format (MLA,APA)")
     format = input("ENTER FORTMAT|:| ")
